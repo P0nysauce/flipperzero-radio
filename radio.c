@@ -164,7 +164,7 @@ int32_t radio_app(void* p) {
     // Set ViewPort callbacks
     ViewPort* view_port = view_port_alloc();
     view_port_draw_callback_set(view_port, render_callback, demo_context);
-    view_port_input_callback_set(view_port, input_callback, demo_context->queue);
+    view_port_input_callback_set(view_port, (void (*)(InputEvent *, void *))input_callback, demo_context->queue);
 
     // Open GUI and register view_port
     Gui* gui = furi_record_open(RECORD_GUI);
